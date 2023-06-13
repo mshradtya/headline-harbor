@@ -1,18 +1,90 @@
 import express from "express";
 import morgan from "morgan";
+import mongoose from "mongoose";
+import axios from "axios";
+import cheerio from "cheerio";
 import "dotenv/config";
 
 import newsRouter from "./routes/news.js";
+import newsList from "./data/newsList.js";
+import News from "./models/news.js";
 
 const app = express();
 const PORT = 3000;
 const API = process.env.API_URL;
 
+// middleware
 app.use(morgan("tiny"));
 app.use(express.json());
 
 // routes
 app.use(`${API}/news`, newsRouter);
+
+// connect to the database
+mongoose
+  .connect(process.env.CONNECTION_STRING, {
+    dbName: "newsdb",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to the database");
+    scrapeNews();
+  })
+  .catch((error) => {
+    console.error("Failed to connect to the database:", error);
+  });
+
+// scrape latest news
+async function scrapeNews() {
+  try {
+    await News.deleteMany();
+
+    const results = await Promise.all(newsList.map(fetchNews));
+    console.log("Scraped latest news");
+  } catch (error) {
+    console.error("Failed to scrape news:", error);
+  }
+}
+
+async function fetchNews(news) {
+  try {
+    const response = await axios.get(news.url);
+    const html = response.data;
+    const $ = cheerio.load(html);
+    const source = news.source;
+    const category = news.category;
+    const title = $(news.titleSelector).text().trim();
+    const summary = $(news.summarySelector).text().trim();
+    const banner = $(news.bannerSelector).attr("src");
+
+    // some sites don't have complete url
+
+    const domains = {
+      BBC: "https://www.bbc.com",
+      ZeeNews: "https://zeenews.india.com",
+    };
+
+    let link = "";
+
+    news.source in domains
+      ? (link = domains[news.source] + $(news.linkSelector).attr("href"))
+      : (link = $(news.linkSelector).attr("href"));
+
+    const newsModel = new News({
+      source,
+      category,
+      title,
+      summary,
+      banner,
+      link,
+    });
+
+    await newsModel.save();
+  } catch (error) {
+    console.error("Failed to save news:", error);
+  }
+}
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
