@@ -39,8 +39,7 @@ mongoose
 async function scrapeNews() {
   try {
     await News.deleteMany();
-
-    const results = await Promise.all(newsList.map(fetchNews));
+    await Promise.all(newsList.map(fetchNews));
     console.log("Scraped latest news");
   } catch (error) {
     console.error("Failed to scrape news:", error);
@@ -63,6 +62,9 @@ async function fetchNews(news) {
     const domains = {
       BBC: "https://www.bbc.com",
       ZeeNews: "https://zeenews.india.com",
+      CNN: "https://edition.cnn.com",
+      HindustanTimes: "https://www.hindustantimes.com",
+      HindustanTimesTech: "https://tech.hindustantimes.com",
     };
 
     let link = "";
