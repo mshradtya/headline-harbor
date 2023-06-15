@@ -193,10 +193,14 @@ const newsList = [
     source: "NDTV",
     category: "india",
     url: "https://www.ndtv.com/india",
-    titleSelector: "div.featured_desc a",
-    summarySelector: "",
-    bannerSelector: "div.featured_story img",
-    linkSelector: "div.featured_story a",
+    titleSelector:
+      "div.news_Itm:nth-child(1) > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1)",
+    summarySelector:
+      "div.news_Itm:nth-child(1) > div:nth-child(2) > p:nth-child(3)",
+    bannerSelector:
+      "div.news_Itm:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
+    linkSelector:
+      "div.news_Itm:nth-child(1) > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1)",
   },
   {
     source: "NDTV",
