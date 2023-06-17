@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   Link,
   Button,
   Menu,
@@ -10,15 +9,15 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
   useColorModeValue,
   Stack,
-  useColorMode,
+  // useColorMode,
   Center,
-  Image,
   Text,
+  Icon,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, StarIcon } from "@chakra-ui/icons";
+import { FaUser } from "react-icons/fa";
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -36,7 +35,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 
 export default function Nav() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // const { colorMode, toggleColorMode } = useColorMode();
   //   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -64,7 +63,7 @@ export default function Nav() {
               >
                 <StarIcon />
               </Button>
-              <Button
+              {/* <Button
                 bg={"brand.100"}
                 rounded={"full"}
                 color={colorMode === "light" ? "brand.500" : "brand.100"}
@@ -74,7 +73,7 @@ export default function Nav() {
                 onClick={toggleColorMode}
               >
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-              </Button>
+              </Button> */}
 
               <Menu>
                 <MenuButton
@@ -83,27 +82,15 @@ export default function Nav() {
                   rounded={"full"}
                   variant={"link"}
                   cursor={"pointer"}
+                  color={"brand.500"}
                   boxShadow="0px 2px 4px rgba(0, 0, 0, 0.1)"
-                  //   minW={0}
                 >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
+                  <Icon as={FaUser} boxSize={4} />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </Center>
-                  <br />
                   <Center>
                     <p>Username</p>
                   </Center>
-                  <br />
                   <MenuDivider />
                   <MenuItem>Your Servers</MenuItem>
                   <MenuItem>Account Settings</MenuItem>
