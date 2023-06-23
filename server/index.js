@@ -57,10 +57,8 @@ async function fetchNews(news) {
     const category = news.category;
     const title = $(news.titleSelector).text().trim();
     const summary = $(news.summarySelector).text().trim();
-    const banner = $(news.bannerSelector).attr("src");
 
-    // some sites don't have complete url
-
+    // some sites don't have absolute url for article link
     const domains = {
       BBC: "https://www.bbc.com",
       ZeeNews: "https://zeenews.india.com",
@@ -70,10 +68,15 @@ async function fetchNews(news) {
     };
 
     let link = "";
-
     news.source in domains
       ? (link = domains[news.source] + $(news.linkSelector).attr("href"))
       : (link = $(news.linkSelector).attr("href"));
+
+    // zeenews uses lazy loading
+    let banner = "";
+    news.source === "ZeeNews"
+      ? (banner = $(news.bannerSelector).attr("data-src"))
+      : (banner = $(news.bannerSelector).attr("src"));
 
     const newsModel = new News({
       source,

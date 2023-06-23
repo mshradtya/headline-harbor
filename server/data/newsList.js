@@ -128,17 +128,6 @@ const newsList = [
       "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
     linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
   },
-  // {
-  //   source: "ZeeNews",
-  //   category: "technology",
-  //   url: "https://zeenews.india.com/technology",
-  //   titleSelector:
-  //     "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
-  //   summarySelector: "",
-  //   bannerSelector:
-  //     "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
-  //   linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
-  // },
   {
     source: "ZeeNews",
     category: "sport",
@@ -179,7 +168,6 @@ const newsList = [
     bannerSelector: ".hero_image > a:nth-child(1) > img:nth-child(1)",
     linkSelector: ".hero_highlight > a:nth-child(1)",
   },
-
   {
     source: "IndianExpress",
     category: "entertainment",
