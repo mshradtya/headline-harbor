@@ -3,6 +3,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import axios from "axios";
 import cheerio from "cheerio";
+import cors from "cors";
 import "dotenv/config";
 
 import newsRouter from "./routes/news.js";
@@ -16,6 +17,7 @@ const API = process.env.API_URL;
 // middleware
 app.use(morgan("tiny"));
 app.use(express.json());
+app.use(cors());
 
 // routes
 app.use(`${API}/news`, newsRouter);

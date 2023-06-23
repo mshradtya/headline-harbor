@@ -1,11 +1,4 @@
-import {
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  HStack,
-} from "@chakra-ui/react";
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
 
 import AllNews from "../allNews/AllNews";
 import IndiaNews from "../indiaNews/IndiaNews";
@@ -76,9 +69,7 @@ const Categories = () => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <HStack>
-              <AllNews />
-            </HStack>
+            <AllNews />
           </TabPanel>
           <TabPanel>
             <IndiaNews />

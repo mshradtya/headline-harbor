@@ -264,7 +264,7 @@ const newsList = [
       "div.cartHolder:nth-child(4) > h3:nth-child(1) > a:nth-child(1)",
     summarySelector: "",
     bannerSelector:
-      "div.cartHolder:nth-child(4) > figure:nth-child(4) > span:nth-child(1) > a:nth-child(1) > img",
+      "div.cartHolder:nth-child(2) > figure:nth-child(4) > span:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
     linkSelector:
       "div.cartHolder:nth-child(4) > h3:nth-child(1) > a:nth-child(1)",
   },
