@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
-import NewsCard from "../newsCard/NewsCard";
+import NewsCard from "./NewsCard";
 
 interface News {
   _id: string;
@@ -12,13 +12,15 @@ interface News {
   title: string;
 }
 
-const AllNews = () => {
+const EntertainmentNews = () => {
   const [news, setNews] = useState<News[]>([]);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/news");
+        const response = await fetch(
+          "http://localhost:3000/api/v1/news/entertainment"
+        );
         const newsData = await response.json();
         console.log(newsData);
         setNews(newsData);
@@ -43,4 +45,4 @@ const AllNews = () => {
   );
 };
 
-export default AllNews;
+export default EntertainmentNews;

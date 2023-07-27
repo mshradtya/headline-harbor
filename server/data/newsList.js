@@ -135,8 +135,7 @@ const newsList = [
     titleSelector:
       "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
     summarySelector: "",
-    bannerSelector:
-      "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
+    bannerSelector: "#articleImage",
     linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
   },
   {

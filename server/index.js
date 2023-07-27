@@ -50,7 +50,9 @@ async function scrapeNews() {
 
 async function fetchNews(news) {
   try {
-    const response = await axios.get(news.url);
+    const response = await axios.get(news.url, {
+      timeout: 50000,
+    });
     const html = response.data;
     const $ = cheerio.load(html);
     const source = news.source;

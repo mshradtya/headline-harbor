@@ -1,11 +1,11 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
 
-import AllNews from "../allNews/AllNews";
-import IndiaNews from "../indiaNews/IndiaNews";
-import WorldNews from "../worldNews/WorldNews";
-import TechNews from "../techNews/TechNews";
-import SportsNews from "../sportsNews/SportsNews";
-import EntertainmentNews from "../entertainmentNews/EntertainmentNews";
+import AllNews from "./AllNews";
+import IndiaNews from "./IndiaNews";
+import WorldNews from "./WorldNews";
+import TechNews from "./TechNews";
+import SportsNews from "./SportsNews";
+import EntertainmentNews from "./EntertainmentNews";
 
 const Categories = () => {
   return (

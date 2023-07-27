@@ -1,5 +1,5 @@
-import Nav from "../../components/navbar/Nav";
-import Categories from "../../components/categories/Categories";
+import Nav from "../components/Nav";
+import Categories from "../components/Categories";
 
 const Home = () => {
   return (

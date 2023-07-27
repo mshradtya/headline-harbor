@@ -5,6 +5,10 @@ import {
   Stack,
   useColorModeValue,
   Image,
+  Flex,
+  Spacer,
+  Button,
+  Link,
 } from "@chakra-ui/react";
 
 interface News {
@@ -13,6 +17,7 @@ interface News {
   category: string;
   title: string;
   summary: string;
+  link: string;
 }
 
 const NewsCard = ({ news }: { news: News }) => {
@@ -62,6 +67,13 @@ const NewsCard = ({ news }: { news: News }) => {
             {news.title}
           </Heading>
           <Text color={"gray.500"}>{news.summary}</Text>
+          <Flex justify={"center"} align={"center"} mt={6} fontSize={"sm"}>
+            <Text color={"gray.500"}>Feb 08, 2021</Text>
+            <Spacer />
+            <Link href={news.link} isExternal>
+              <Button>Read More</Button>
+            </Link>
+          </Flex>
         </Stack>
       </Box>
     </div>

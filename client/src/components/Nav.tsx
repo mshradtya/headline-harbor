@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
 import {
   Box,
   Flex,
-  Link,
   Button,
   Menu,
   MenuButton,
@@ -11,7 +9,7 @@ import {
   MenuDivider,
   useColorModeValue,
   Stack,
-  // useColorMode,
+  useColorMode,
   Center,
   Text,
   Icon,
@@ -19,24 +17,8 @@ import {
 import { MoonIcon, SunIcon, StarIcon } from "@chakra-ui/icons";
 import { FaUser } from "react-icons/fa";
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
-
 export default function Nav() {
-  // const { colorMode, toggleColorMode } = useColorMode();
-  //   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
       <Box
@@ -63,7 +45,7 @@ export default function Nav() {
               >
                 <StarIcon />
               </Button>
-              {/* <Button
+              <Button
                 bg={"brand.100"}
                 rounded={"full"}
                 color={colorMode === "light" ? "brand.500" : "brand.100"}
@@ -73,7 +55,7 @@ export default function Nav() {
                 onClick={toggleColorMode}
               >
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-              </Button> */}
+              </Button>
 
               <Menu>
                 <MenuButton
