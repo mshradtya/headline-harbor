@@ -10,7 +10,7 @@ function createServer() {
   const API = process.env.API_URL;
   const allowedOrigins = [
     "http://localhost:5173",
-    "https://newshub-klebca.netlify.app/",
+    "https://newshub-klebca.netlify.app",
   ];
   const corsOptions = {
     // origin: process.env.ORIGIN,
