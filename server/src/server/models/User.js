@@ -3,12 +3,6 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      maxLength: 32,
-      unique: true,
-    },
     email: {
       type: String,
       required: true,
@@ -32,25 +26,13 @@ const userSchema = new mongoose.Schema(
       enum: ["User"],
       default: "User",
     },
-    dateRegistered: {
-      type: String,
-      required: true,
-      default: Date.now,
-    },
-    bookmarks: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "News",
-      },
-    ],
+    bookmarks: [],
   },
   { versionKey: false }
 );
 
 userSchema.pre("save", async function (next) {
   const user = this;
-  const lowercaseUsername = user.username.toLowerCase();
-  user.username = lowercaseUsername;
 
   if (user.isModified("password") && user.password.length < 257) {
     const salt = await bcrypt.genSalt(10);
@@ -62,23 +44,10 @@ userSchema.pre("save", async function (next) {
 
 userSchema.post("save", function (error, doc, next) {
   if (error.code === 11000) {
-    if (error.keyPattern && error.keyPattern.username) {
-      return next(
-        new Error(`A user with the username '${doc.username}' already exists.`)
-      );
-    } else if (error.keyPattern && error.keyPattern.email) {
+    if (error.keyPattern && error.keyPattern.email) {
       return next(
         new Error(`A user with the email '${doc.email}' already exists.`)
       );
-    }
-  }
-
-  if (error.errors.username) {
-    if (error.errors.username.kind === "required") {
-      return next(new Error(`Username is required.`));
-    }
-    if (error.errors.username.kind === "maxlength") {
-      return next(new Error(`Username cannot be more than 32 characters.`));
     }
   }
 

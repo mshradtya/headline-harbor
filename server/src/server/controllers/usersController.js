@@ -2,9 +2,8 @@ const usersService = require("../services/usersService");
 
 const registerUser = async (req, res) => {
   if (
-    Object.keys(req.body).length !== 3 ||
+    Object.keys(req.body).length !== 2 ||
     !(
-      Object.keys(req.body).includes("username") &&
       Object.keys(req.body).includes("email") &&
       Object.keys(req.body).includes("password")
     )
@@ -12,17 +11,16 @@ const registerUser = async (req, res) => {
     return res.status(400).json({
       status: 400,
       success: false,
-      message: "username, email and password is required.",
+      message: "email and password is required.",
     });
   }
   try {
+    console.log(req.body);
     const userData = {
-      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       role: "User",
-      dateRegistered: formattedDate(new Date()),
-      devices: [],
+      bookmarks: [],
     };
     const user = await usersService.registerUser(userData);
     return res.status(201).json({ status: 201, success: true, user: user });

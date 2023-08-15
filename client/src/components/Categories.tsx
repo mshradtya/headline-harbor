@@ -11,7 +11,14 @@ const Categories = () => {
   return (
     <div className="News">
       <Tabs align="center" variant="soft-rounded">
-        <TabList paddingTop={"10px"} paddingBottom={"10px"}>
+        <TabList
+          paddingTop={"10px"}
+          paddingBottom={"10px"}
+          paddingLeft={"10px"}
+          paddingRight={"10px"}
+          overflowX="auto" // Enable horizontal scrolling
+          whiteSpace="nowrap" // Prevent line breaks
+        >
           <Tab
             _selected={{
               color: "white",

@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Home from "./pages/Home.tsx";
+import { AuthProvider } from "./context/AuthProvider.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./App";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
 const theme = extendTheme({
@@ -16,8 +18,20 @@ const theme = extendTheme({
   },
 });
 
+// ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+//   <ChakraProvider theme={theme}>
+//     <App />
+//   </ChakraProvider>
+// );
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraProvider theme={theme}>
-    <Home />
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   </ChakraProvider>
 );

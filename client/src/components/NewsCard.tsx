@@ -8,8 +8,11 @@ import {
   Flex,
   Spacer,
   Button,
+  IconButton,
   Link,
 } from "@chakra-ui/react";
+
+import { BsFillBookmarkFill } from "react-icons/bs";
 
 interface News {
   banner: string;
@@ -68,7 +71,7 @@ const NewsCard = ({ news }: { news: News }) => {
           </Heading>
           <Text color={"gray.500"}>{news.summary}</Text>
           <Flex justify={"center"} align={"center"} mt={6} fontSize={"sm"}>
-            <Text color={"gray.500"}>Feb 08, 2021</Text>
+            <IconButton aria-label="Bookmark" icon={<BsFillBookmarkFill />} />
             <Spacer />
             <Link href={news.link} isExternal>
               <Button>Read More</Button>

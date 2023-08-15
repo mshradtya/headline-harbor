@@ -107,47 +107,28 @@ const newsData = [
       "div.container_lead-plus-headlines-with-images__item:nth-child(1) > a:nth-child(2)",
   },
   {
-    source: "ZeeNews",
-    category: "india",
-    url: "https://zeenews.india.com/india",
-    titleSelector:
-      "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
-    summarySelector: "",
-    bannerSelector:
-      "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
-    linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
-  },
-  {
-    source: "ZeeNews",
+    source: "FoxNews",
     category: "world",
-    url: "https://zeenews.india.com/world",
+    url: "https://www.foxnews.com/world",
     titleSelector:
-      "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(2) > header:nth-child(1) > h2:nth-child(2) > a:nth-child(1)",
     summarySelector: "",
     bannerSelector:
-      "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
-    linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(1) > a:nth-child(1) > picture:nth-child(1) > img:nth-child(6)",
+    linkSelector:
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(2) > header:nth-child(1) > h2:nth-child(2) > a:nth-child(1)",
   },
   {
-    source: "ZeeNews",
-    category: "sport",
-    url: "https://zeenews.india.com/sports",
-    titleSelector:
-      "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
-    summarySelector: "",
-    bannerSelector: "#articleImage",
-    linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
-  },
-  {
-    source: "ZeeNews",
+    source: "FoxNews",
     category: "entertainment",
-    url: "https://zeenews.india.com/entertainment",
+    url: "https://www.foxnews.com/entertainment",
     titleSelector:
-      "div.desc-title:nth-child(3) > a:nth-child(2) > h2:nth-child(1)",
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(2) > header:nth-child(1) > h2:nth-child(2) > a:nth-child(1)",
     summarySelector: "",
     bannerSelector:
-      "div.container:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)",
-    linkSelector: "div.desc-title:nth-child(3) > a:nth-child(2)",
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(1) > a:nth-child(1) > picture:nth-child(1) > img:nth-child(6)",
+    linkSelector:
+      "div.collection:nth-child(1) > div:nth-child(1) > article:nth-child(1) > div:nth-child(2) > header:nth-child(1) > h2:nth-child(2) > a:nth-child(1)",
   },
   {
     source: "IndianExpress",

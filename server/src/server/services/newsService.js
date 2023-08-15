@@ -22,6 +22,7 @@ async function scrapeNews(news) {
       CNN: "https://edition.cnn.com",
       HindustanTimes: "https://www.hindustantimes.com",
       HindustanTimesTech: "https://tech.hindustantimes.com",
+      FoxNews: "https://www.foxnews.com",
     };
 
     let link = "";

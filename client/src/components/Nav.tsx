@@ -13,12 +13,25 @@ import {
   Center,
   Text,
   Icon,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon, StarIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaUser } from "react-icons/fa";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import useAuth from "../hooks/useAuth";
+import useLogout from "../hooks/useLogout";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const { auth } = useAuth();
+  const logout = useLogout();
+
+  const signOut = async () => {
+    await logout();
+  };
+
   return (
     <>
       <Box
@@ -28,7 +41,13 @@ export default function Nav() {
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-            <Text fontSize="2xl" fontWeight={"bold"} color="brand.100">
+            <Text
+              as={RouterLink}
+              to="/"
+              fontSize="2xl"
+              fontWeight={"bold"}
+              color="brand.100"
+            >
               NewsHub
             </Text>
           </Box>
@@ -36,6 +55,8 @@ export default function Nav() {
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Button
+                as={RouterLink}
+                to="/bookmarks"
                 rounded="full"
                 bg="brand.100"
                 color="brand.500"
@@ -43,7 +64,7 @@ export default function Nav() {
                 m="0"
                 p="0"
               >
-                <StarIcon />
+                <BsFillBookmarkFill />
               </Button>
               <Button
                 bg={"brand.100"}
@@ -71,12 +92,22 @@ export default function Nav() {
                 </MenuButton>
                 <MenuList alignItems={"center"}>
                   <Center>
-                    <p>Username</p>
+                    <p>{auth.email ? auth.email : "Not Registered"}</p>
                   </Center>
                   <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  {auth.email ? (
+                    <MenuItem
+                      onClick={() => {
+                        signOut();
+                      }}
+                    >
+                      Logout
+                    </MenuItem>
+                  ) : (
+                    <MenuItem as={RouterLink} to="/login">
+                      Login
+                    </MenuItem>
+                  )}
                 </MenuList>
               </Menu>
             </Stack>
