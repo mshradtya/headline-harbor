@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const newsSchema = new mongoose.Schema({
   source: String,
@@ -9,4 +9,5 @@ const newsSchema = new mongoose.Schema({
   link: String,
 });
 
-export default new mongoose.model("News", newsSchema);
+const News = mongoose.model("News", newsSchema);
+module.exports = News;

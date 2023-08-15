@@ -1,4 +1,4 @@
-const newsList = [
+const newsData = [
   {
     source: "BBC",
     category: "india",
@@ -269,4 +269,4 @@ const newsList = [
   },
 ];
 
-export default newsList;
+module.exports = newsData;

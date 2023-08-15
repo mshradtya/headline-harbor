@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import NewsCard from "./NewsCard";
+import axios from "../api/axios";
 
 interface News {
   _id: string;
@@ -18,8 +19,8 @@ const SportsNews = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/news/sport");
-        const newsData = await response.json();
+        const response = await axios.get("/news/sport");
+        const newsData = await response.data.news;
         console.log(newsData);
         setNews(newsData);
       } catch (error) {
