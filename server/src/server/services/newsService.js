@@ -6,7 +6,6 @@ const newsData = require("../utils/newsData");
 
 async function scrapeNews(news) {
   try {
-    let counter = 0;
     const response = await axios.get(news.url, {
       timeout: 50000,
     });
@@ -45,8 +44,7 @@ async function scrapeNews(news) {
     });
 
     await newsModel.save();
-    counter = counter + 1;
-    console.log(counter);
+    console.log(source, category);
   } catch (error) {
     console.error("Failed to save news:", error);
   }
