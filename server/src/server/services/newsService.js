@@ -52,7 +52,7 @@ async function scrapeNews(news) {
 const scrapeLatestNews = async () => {
   await News.deleteMany();
   console.log("scraping...");
-  await Promise.all(newsData.map(scrapeNews));
+  Promise.all(newsData.map(scrapeNews));
   return { message: "scraped latest news" };
 };
 
