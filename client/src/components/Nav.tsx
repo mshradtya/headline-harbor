@@ -13,7 +13,6 @@ import {
   Center,
   Text,
   Icon,
-  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaUser } from "react-icons/fa";

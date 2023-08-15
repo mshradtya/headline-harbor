@@ -6,7 +6,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   InputGroup,
   InputRightElement,
   Stack,
@@ -18,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
@@ -27,8 +26,8 @@ export default function Login() {
   const { setAuth } = useAuth();
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  //   const location = useLocation();
+  //   const from = location.state?.from?.pathname || "/";
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -61,7 +60,7 @@ export default function Login() {
 
       setEmail("");
       setPassword("");
-      navigate(from, { replace: true });
+      navigate("/");
     } catch (err: any) {
       if (err.response && err.response.data && err.response.data.message) {
         setServerError(err.response.data.message);
