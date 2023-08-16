@@ -68,7 +68,7 @@ export default function Nav() {
               <Button
                 bg={"brand.100"}
                 rounded={"full"}
-                color={colorMode === "light" ? "brand.500" : "brand.100"}
+                color={colorMode === "light" ? "brand.500" : "brand.500"}
                 boxShadow="0px 2px 4px rgba(0, 0, 0, 0.1)"
                 m={"0"}
                 p={"0"}

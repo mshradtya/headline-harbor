@@ -9,6 +9,7 @@ const {
   readEntertainmentNews,
   scrapeLatestNews,
 } = require("../controllers/newsController");
+const { authUser } = require("../controllers/authController");
 
 router.post("/news/scrape", scrapeLatestNews);
 router.get("/news/", readAllNews);

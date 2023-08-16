@@ -6,13 +6,11 @@ import {
   useColorModeValue,
   Image,
   Flex,
-  Spacer,
   Button,
-  IconButton,
   Link,
+  IconButton,
+  Spacer,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { BsFillBookmarkFill } from "react-icons/bs";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAuth from "../hooks/useAuth";
 
@@ -25,20 +23,23 @@ interface News {
   link: string;
 }
 
-const NewsCard = ({ news }: { news: News }) => {
+import { AiFillDelete } from "react-icons/ai";
+
+const BookmarkCard = ({ news }: { news: News }) => {
   const { auth } = useAuth();
-  const [isBookmarked, setIsBookmarked] = useState(false);
+
   const axiosPrivate = useAxiosPrivate();
 
-  const handleBookmarkClick = async () => {
+  const handleBookmarkRemove = async () => {
     try {
-      const { banner, source, category, title, summary, link } = news;
+      const { link } = news;
       const _id = auth._id;
-      const data = { _id, banner, source, category, title, summary, link };
+      const data = { _id, link };
 
-      const response = await axiosPrivate.post("/user/bookmark", data);
-
-      if (response.status === 200) setIsBookmarked(true); // Update the bookmark status on success
+      const response = await axiosPrivate.post("/user/bookmark/remove", data);
+      if (response.status === 200) {
+        console.log("removed");
+      }
     } catch (error) {
       console.error("Error adding bookmark:", error);
     }
@@ -93,9 +94,8 @@ const NewsCard = ({ news }: { news: News }) => {
           <Flex justify={"center"} align={"center"} mt={6} fontSize={"sm"}>
             <IconButton
               aria-label="Bookmark"
-              icon={<BsFillBookmarkFill />}
-              onClick={handleBookmarkClick} // Call the click handler
-              color={isBookmarked ? "green.500" : "gray.500"} // Change the color based on bookmark status
+              icon={<AiFillDelete />}
+              onClick={handleBookmarkRemove}
             />
             <Spacer />
             <Link href={news.link} isExternal>
@@ -108,4 +108,4 @@ const NewsCard = ({ news }: { news: News }) => {
   );
 };
 
-export default NewsCard;
+export default BookmarkCard;
